@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {dailyOverview, contactLinks} from '../dist/workflow.js';
+import {defaults} from '../dist/core.js';
+const base = {settings:{...defaults}, jobs:[], invoices:[], owned:[]};
+const job = {id:'a',status:'Geplant',date:'2026-10-08',time:'09:00',duration:2,lines:[{service:'lawn',qty:100,rate:1}],factor:1};
+const state = {...base,jobs:[job,{...job,id:'b',status:'Erledigt'}, {...job,id:'c',date:'2026-10-07'}, {...job,id:'d',status:'Storniert'}],invoices:[{id:'i',jobId:'b',due:'2026-10-07',calc:{gross:100},payments:[{amount:30}]}]};
+const d = dailyOverview(state,'2026-10-08');
+assert.equal(d.agenda.length,1); assert.equal(d.unbilled.length,0); assert.equal(d.missed.length,1);assert.equal(d.overdueTotal,70);assert.equal(d.plannedHours,2);assert.equal(d.backupDue,true);assert.ok(d.missing.some(eq=>eq.id==='mower'));
+assert.equal(dailyOverview({...state,settings:{...defaults,lastBackupExportAt:'2026-10-08T09:00:00Z'}},'2026-10-08').backupDue,false);
+assert.equal(dailyOverview({...state,invoices:[{...state.invoices[0],payments:[{amount:100}]}]},'2026-10-08').overdue.length,0);
+assert.equal(contactLinks({phone:'+49 (170) 123-45'}).phone,'tel:+4917012345');
+assert.equal(contactLinks({phone:'javascript:alert(1)',email:'bad',address:'A & B 1'}).email,'');
+assert.ok(contactLinks({address:'A & B 1'}).maps.endsWith('A%20%26%20B%201'));
+assert.equal(contactLinks({}).maps,'');
+console.log('WORKFLOW PASS: Tagesplan, offene Restbeträge, fehlende Geräte, Abrechnung, Sicherungshinweis und sichere Kontaktlinks.');

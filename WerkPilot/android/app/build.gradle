@@ -1,0 +1,36 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'de.werkpilot.app'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'de.werkpilot.app'
+        minSdk 23
+        targetSdk 35
+        versionCode 50
+        versionName '5.0'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    buildTypes {
+        release { minifyEnabled false }
+    }
+    sourceSets.main.assets.srcDir(layout.buildDirectory.dir('generated/werkpilot-assets'))
+}
+
+def bundleWebApp = tasks.register('bundleWebApp', Sync) {
+    from(rootProject.file('../dist'))
+    into(layout.buildDirectory.dir('generated/werkpilot-assets'))
+    include '**/*.html', '**/*.js', '**/*.css', '**/*.json', '**/*.webmanifest', '**/*.svg', '**/*.png'
+    doFirst {
+        if (!rootProject.file('../dist/index.html').isFile()) {
+            throw new GradleException('Web-App fehlt: Android-Projekt gemeinsam mit dem dist-Verzeichnis auspacken.')
+        }
+        if (!rootProject.file('../dist/native.js').isFile()) {
+            throw new GradleException('Native Adapterdatei dist/native.js fehlt.')
+        }
+    }
+}
+tasks.named('preBuild').configure { dependsOn(bundleWebApp) }

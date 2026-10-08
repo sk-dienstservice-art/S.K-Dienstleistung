@@ -1,0 +1,98 @@
+WERKPILOT 5.0 · HANDWERK & SERVICE
+Stand: 08.10.2026
+
+ANDROID-STUDIO-PAKET
+WerkPilot-5.0-Android-Studio.zip vollständig entpacken.
+Im entpackten Ordner WerkPilot liegen android/ und dist/ nebeneinander.
+Android Studio installieren und über Open den Ordner WerkPilot/android öffnen.
+Der vollständige originale Gradle-Wrapper ist enthalten; kein Bootstrap nötig.
+SDK Platform 35, Build-Tools 35.0.0 und JDK 17 oder 21 verwenden.
+Beim ersten Gradle-Sync Internet für die offiziellen Build-Abhängigkeiten zulassen.
+Build > Build App Bundle(s) / APK(s) > Build APK(s) wählen.
+Nach erfolgreichem Build: android/app/build/outputs/apk/debug/app-debug.apk.
+Die ausführliche Anleitung und das optionale Windows-Buildskript stehen in
+android/README.md. Ein fertig kompiliertes APK ist NICHT enthalten.
+
+INSTALLIERTE APP AKTUALISIEREN
+Änderungen kommen erst mit einem neu gebauten APK auf dein Handy.
+Version 5.0 hat versionCode 50 und die App-Kennung de.werkpilot.app.
+Ein Update benötigt dieselbe App-Kennung und denselben Signaturschlüssel wie
+die bisherige App. Bei einem anderen APK-Builder diese Angaben zuerst prüfen.
+Vor dem Wechsel eine JSON-Sicherung außerhalb der App speichern.
+Nicht ungesichert deinstallieren: Android löscht dabei den lokalen App-Speicher.
+Für den Verkauf einen eigenen signierten Release-Build erstellen und am Gerät
+prüfen. Offene Schritte und Umfang: VERKAUFSSTART.md.
+
+NEU IN VERSION 5.0
+- 59 Leistungsvorlagen in 17 Bereichen: Garten/Landschaft, Reinigung,
+  Maler/Lackierer, Trockenbau, Boden, Fliesen/Fugen, Maurer, Putz, Pflaster,
+  Holz/Zäune, Montage, Metall, Elektro, Sanitär/Heizung/Klima, Dach, Rückbau
+  und individuelle Leistungen. Weitere Tätigkeiten frei erfassen.
+- Handwerkskatalog mit Aufmaßfragen, Geräten und bearbeitbaren Zeitannahmen.
+- Material- und Einsatzplanung: Mengen, Verschnitt/Reserve, eigene Maschinen,
+  Mietgeräte sowie bestätigte Material- und Maschinenkosten je Auftrag.
+- Tatsächliche Preise selbst bestätigen, auch bei 0 Euro. Geräte-Kaufpreise
+  werden nicht als auftragsbezogene Mietkosten übernommen. Bestätigte
+  Plansummen ersetzen Zusatzkosten ohne doppeltes Verbrauchsmaterial.
+- Foto-Mehrfachauswahl, Vorher/Während/Nachher/Detail und Beschreibungen.
+- Überarbeitete optionale Bildklassifikation: Fortschritt, Stoppen, Wiederholen
+  und konkrete Fehler. Unsichere Ergebnisse und ein erkanntes Gewerk erzeugen
+  keine automatische Leistung oder erfundene Menge. Aufmaß bestätigen.
+- Sprache um konkrete Handwerksleistungen und Rückfragen bei unklarem Umfang
+  erweitert. Kosten für Fahrt, Material, Maschinen und Entsorgung getrennt.
+- Gewerke-, Planungs- und Fotoansichten mit überarbeiteten Abständen,
+  breiteren Galerieflächen und angepassten Ressourcenfeldern für Handys.
+
+FOTOERKENNUNG AUF DEM HANDY
+Nach Installation des neuen APK Foto importieren und Bildmodell starten.
+Beim ersten Start rund 180 MB Download, aktuelle Android System WebView und
+genug Arbeitsspeicher einplanen. Dafür ist Internet nötig, kein eigener API-Key.
+Das Foto wird lokal ausgewertet und nicht zu einem KI-Server hochgeladen.
+Nach Neustart ist die Offline-Verfügbarkeit des Modells nicht garantiert.
+Die neue Fehlermeldung nennt den technischen Grund, beispielsweise Verbindung,
+WASM-Unterstützung oder Speicher. Details und Hilfe: BILDERKENNUNG.md.
+Fotos liefern Motiv-/Bereichsvorschläge, keine sicheren Maße, Schäden oder Preise.
+Echte Modellinferenz auf einem Handy wurde in dieser Umgebung nicht geprüft.
+
+BETRIEB, SPRACHE UND KALKULATION EINRICHTEN
+Eigene Firma, Steuermodus, interne Stundenkosten, Verkaufssätze und Zielmarge
+unter Firmenarbeitsplatz und Einstellungen bestätigen. Vorlagenpreise sind
+bearbeitbare Planungswerte, keine amtlichen Bayern-Tarife oder Gewinnzusage.
+Mitwitz ist als Ausgangsort vorbereitet; Kronach, Sonnefeld, Stockheim und
+Gundelsdorf sind anpassbare Einsatzorte. Tatsächliche Kilometer und gesamte
+Fahrtzeit eingeben. Die App erfindet keine Straßenentfernungen.
+Kronacher gewerbliche Grüngutgebühren sind mit Tarifstand und Quelle hinterlegt;
+Volumen und aktuelle Annahmebedingungen bestätigen. Ausgeschlossene Stämme,
+Ast- und Wurzelstärken separat entsorgen. REGIONALE-PREISQUELLEN.md beachten.
+Maße, örtliche Bedingungen, Materialpreise und erforderliche Qualifikationen
+vor dem verbindlichen Angebot prüfen. Fehlende Angaben kennzeichnen Entwürfe.
+Eine verfügbare deutsche Männerstimme in der App auswählen und probehören.
+Android bevorzugt verfügbare On-Device-Spracherkennung; ein Systemanbieter kann
+Internet benötigen. Stimmen und Erkennungsqualität hängen vom Handy ab.
+
+BESTEHENDE FUNKTIONEN
+Kunden, Aufträge, Terminplanung und ICS, Überschneidungsprüfung, Checklisten,
+Gerätebestand, Zeiterfassung, nummerierte Angebote mit eingefrorenem Preisstand,
+Rechnungsentwürfe und PDF-Druck, Teilzahlungen, Einnahmen/Ausgaben mit Belegen,
+Nachkalkulation, Kleinunternehmer-Modus, Umsatzgrenzen, JSON- und CSV-Export.
+
+DATEN UND DESKTOP-VORSCHAU
+Daten bleiben lokal in der jeweiligen App oder im Browser. Sicherungen regelmäßig
+außerhalb der App aufbewahren. Browser und Android-App teilen Daten nicht
+automatisch. Native Android-Exporte sind auf 20 MB je Datei begrenzt.
+WerkPilot.html ist im separaten Gesamtpaket als Desktop-Browservorschau enthalten.
+Für eine installierbare Web-App ist eine eigene HTTPS-Bereitstellung von dist/
+nötig. Keine veröffentlichte Website oder Play-Store-Version ist enthalten.
+Die Finanzübersicht ist keine amtliche EÜR oder GoBD-Buchhaltung.
+
+PRÜFSTAND
+347 automatisierte Tests und 16 zusätzliche UI-Regressionen bestanden.
+Zusätzlich Paketstart, Render-/Formularabläufe und native Adapter geprüft.
+ZIP-Inhalte und Prüfsummen werden beim Verpacken kontrolliert.
+Kein Android-Build, echter Mikrofon-/Stimmtest, Handy-Darstellung oder echter
+Modelllauf in dieser Umgebung. PRUEFBERICHT.md nennt Umfang und offene Prüfungen.
+
+QUELLPACKET ERNEUT ERSTELLEN
+Im Projektordner: python scripts/package-release.py --output PFAD_ZUM_AUSGABEORDNER
+Benötigt Node.js und Python 3, keine zusätzlich installierten Python-Pakete.
+Fremdkomponenten und mitgelieferte Lizenztexte: THIRD_PARTY_NOTICES.md.

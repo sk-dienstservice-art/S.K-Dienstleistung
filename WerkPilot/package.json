@@ -1,0 +1,10 @@
+{
+  "name": "werkpilot",
+  "version": "5.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node tests/core.test.mjs && node tests/small-business.test.mjs && node tests/speech.test.mjs && node tests/audit-business.test.mjs && node tests/audit-speech.test.mjs && node tests/backup.test.mjs && node tests/workflow.test.mjs && node tests/platform.test.mjs && node tests/render.test.mjs && node tests/audit-ui.test.mjs && node android/tests/native.test.mjs && node tests/package.test.mjs && node tests/quotes.test.mjs && node tests/pro-ui.test.mjs && node tests/speech-costs.test.mjs && node tests/knowledge.test.mjs && node tests/professional.test.mjs && node tests/trades.test.mjs && node tests/planner.test.mjs && node tests/photos.test.mjs && node tests/vision.test.mjs && node tests/speech-trades.test.mjs && node tests/handwork-ui.test.mjs",
+    "dev": "python -m http.server 8080 --directory dist"
+  }
+}
